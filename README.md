@@ -1,4 +1,4 @@
-# e-shop
+# e-shop - link - https://e-shop-7f179.firebaseapp.com/
 
 ## Project setup
 ```
