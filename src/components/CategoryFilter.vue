@@ -3,75 +3,13 @@
     <div class="filter-widget">
       <h2 class="fw-title">Categories</h2>
       <ul class="category-menu">
-        <li>
-          <a href="#">Woman wear</a>
-          <ul class="sub-menu">
-            <li>
-              <a href="#">
-                Midi Dresses
-                <span>(2)</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Maxi Dresses
-                <span>(56)</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Prom Dresses
-                <span>(36)</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Little Black Dresses
-                <span>(27)</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Mini Dresses
-                <span>(19)</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Man Wear</a>
-          <ul class="sub-menu">
-            <li>
-              <a href="#">
-                Midi Dresses
-                <span>(2)</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Maxi Dresses
-                <span>(56)</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Prom Dresses
-                <span>(36)</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Children</a>
-        </li>
-        <li>
-          <a href="#">Bags &amp; Purses</a>
-        </li>
-        <li>
-          <a href="#">Eyewear</a>
-        </li>
-        <li>
-          <a href="#">Footwear</a>
+        <li
+          v-for="(category, index) in categories"
+          :key="category.id"
+          :class="{active :currentFilter}"
+        >
+          <a @click.prevent="addFilter(category, index)">{{category.category}}</a>
+          <ul class="sub-menu"></ul>
         </li>
       </ul>
     </div>
@@ -218,3 +156,25 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    categories: {
+      required: true
+    }
+  },
+  data() {
+    return {
+      activeFilter: false,
+      currentFilter: ""
+    };
+  },
+  methods: {
+    addFilter(category, index) {
+      this.$store.commit("storeFilters", category.id);
+      const item = this.categories[index];
+      this.currentFilter = item;
+    }
+  }
+};
+</script>

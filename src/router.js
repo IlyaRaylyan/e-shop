@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Home from "./Pages/PageHome.vue";
 import CategoryPage from "./Pages/CategoryPage.vue";
 import ProductPage from "./Pages/ProductPage.vue";
+import CartPage from "./Pages/CartPage.vue";
 
 Vue.use(Router);
 
@@ -18,6 +19,11 @@ export default new Router({
       path: "/category",
       name: "CategoryPage",
       component: CategoryPage
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      component: CartPage
     },
     {
       path: "/product/:id",

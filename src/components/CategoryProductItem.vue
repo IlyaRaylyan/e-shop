@@ -7,10 +7,11 @@
           <img :src="product.product_images[0]" alt />
         </router-link>
         <div class="pi-links">
-          <a href="#" class="add-card">
+          <router-link class="add-card" :to="{name: 'cart'}">
             <i class="flaticon-bag"></i>
             <span>ADD TO CART</span>
-          </a>
+          </router-link>
+
           <a href="#" class="wishlist-btn">
             <i class="flaticon-heart"></i>
           </a>

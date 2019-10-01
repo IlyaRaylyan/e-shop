@@ -51,14 +51,6 @@ export default {
       .then(() => {
         this.showComponent = true;
       });
-    this.$store.dispatch("fetchCategory").then(product => {
-      product.map(x => {
-        this.$store.commit("storeCategories", {
-          key: x.id,
-          value: x
-        });
-      });
-    });
 
     // this.$store.dispatch("fetchFortyRandomProducts");
   }

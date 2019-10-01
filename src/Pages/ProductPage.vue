@@ -66,7 +66,8 @@
               <span class="inc qtybtn">+</span>
             </div>
           </div>
-          <a href="#" class="site-btn">добавить в корзину</a>
+          <router-link class="site-btn" :to="{name: 'cart'}">добавить в корзину</router-link>
+
           <div id="accordion" class="accordion-area">
             <div class="panel">
               <div class="panel-header" id="headingOne">

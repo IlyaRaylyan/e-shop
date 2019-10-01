@@ -29,7 +29,7 @@
                   <i class="flaticon-bag"></i>
                   <span>0</span>
                 </div>
-                <a href="#">Shopping Cart</a>
+                <router-link :to="{name: 'cart'}">Shopping Cart</router-link>
               </div>
             </div>
           </div>
@@ -61,20 +61,9 @@
             style="display: none;"
           >
             <li>
-              <a href="#" role="menuitem" tabindex="-1">Home</a>
+              <router-link :to="{name: 'home'}">Home</router-link>
             </li>
-            <li>
-              <a href="#" role="menuitem" tabindex="-1">Women</a>
-            </li>
-            <li>
-              <a href="#" role="menuitem" tabindex="-1">Men</a>
-            </li>
-            <li>
-              <a href="#" role="menuitem" tabindex="-1">
-                Jewelry
-                <span class="new">New</span>
-              </a>
-            </li>
+
             <li class="slicknav_collapsed slicknav_parent">
               <a
                 href="#"
@@ -154,20 +143,9 @@
         <!-- menu -->
         <ul class="main-menu">
           <li>
-            <a href="#">Home</a>
+            <router-link :to="{name: 'home'}">Home</router-link>
           </li>
-          <li>
-            <a href="#">Women</a>
-          </li>
-          <li>
-            <a href="#">Men</a>
-          </li>
-          <li>
-            <a href="#">
-              Jewelry
-              <span class="new">New</span>
-            </a>
-          </li>
+
           <li>
             <a href="#">Shoes</a>
             <ul class="sub-menu">

@@ -7,7 +7,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     category: {},
-    products: {}
+    products: {},
+    cart: {},
+    filters: []
   },
   mutations: {
     storeCategories(state, { key, value }) {
@@ -15,6 +17,13 @@ export default new Vuex.Store({
     },
     storeProduct(state, { key, value }) {
       Vue.set(state.products, key, value);
+    },
+    storeFilters(state, filter) {
+      if (state.filters.length == 1) {
+        state.filters.pop();
+      } else {
+        state.filters.push(filter);
+      }
     }
   },
   actions: {
