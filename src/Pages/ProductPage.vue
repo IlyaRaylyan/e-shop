@@ -2,14 +2,19 @@
   <section v-if="product" class="product-section">
     <div class="container">
       <div class="back-link">
-        <router-link :to="{name: 'CategoryPage'}">Back to category</router-link>
+        <router-link :to="{ name: 'CategoryPage' }"
+          >Back to category</router-link
+        >
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <div class="product-pic-zoom" style="position: relative; overflow: hidden;">
+          <div
+            class="product-pic-zoom"
+            style="position: relative; overflow: hidden;"
+          >
             <img
               class="product-big-img"
-              :src="currentPic? currentPic :product.product_images[0]"
+              :src="currentPic ? currentPic : product.product_images[0]"
               alt
             />
             <img
@@ -20,14 +25,18 @@
               style="position: absolute; top: -140.81px; left: -436.309px; opacity: 0; width: 1000px; height: 1358px; border: none; max-width: none; max-height: none;"
             />
           </div>
-          <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+          <div
+            class="product-thumbs"
+            tabindex="1"
+            style="overflow: hidden; outline: none;"
+          >
             <div class="product-thumbs-track">
               <div
                 class="pt"
-                v-for=" (image, index) in product.product_images"
+                v-for="(image, index) in product.product_images"
                 :key="index"
-                v-on:click=" ChoosePic(index)"
-                v-bind:class="{ active:  currentPic == image}"
+                v-on:click="ChoosePic(index)"
+                v-bind:class="{ active: currentPic == image }"
               >
                 <img :src="image" alt />
               </div>
@@ -35,10 +44,10 @@
           </div>
         </div>
         <div class="col-lg-6 product-details">
-          <h2 class="p-title">{{product.product_name}}</h2>
-          <h3 class="p-price">{{product.product_retail_prices}}</h3>
+          <h2 class="p-title">{{ product.product_name }}</h2>
+          <h3 class="p-price">{{ product.product_retail_prices }}</h3>
           <h4 class="p-stock">
-            <span>{{AvailableStatus(product.available)}}</span>
+            <span>{{ AvailableStatus(product.available) }}</span>
           </h4>
           <div class="p-rating">
             <i class="fa fa-star-o"></i>
@@ -48,14 +57,14 @@
             <i class="fa fa-star-o fa-fade"></i>
           </div>
           <div class="p-review">
-            <a href>3 reviews</a>|
-            <a href>Add your review</a>
+            <a href>Артикул</a>|
+            <a href>{{ product.product_article }}</a>
           </div>
           <div class="fw-size-choose">
             <p>Размеры</p>
             <div class="sc-item" v-for="size in product.size">
               <input type="radio" name="sc" id="xs-size" />
-              <label for="xs-size">{{size}}</label>
+              <label for="xs-size">{{ size }}</label>
             </div>
           </div>
           <div class="quantity">
@@ -66,7 +75,9 @@
               <span class="inc qtybtn">+</span>
             </div>
           </div>
-          <button @click="addProductToCart()" class="site-btn">добавить в корзину</button>
+          <button @click="addProductToCart()" class="site-btn">
+            добавить в корзину
+          </button>
 
           <div id="accordion" class="accordion-area">
             <div class="panel">
@@ -79,7 +90,9 @@
                   data-target="#collapse1"
                   aria-expanded="true"
                   aria-controls="collapse1"
-                >Описание</button>
+                >
+                  Описание
+                </button>
               </div>
               <div
                 v-bind:class="{ show: triggerButton1Colapse }"
@@ -89,7 +102,7 @@
                 data-parent="#accordion"
               >
                 <div class="panel-body">
-                  <p>{{GetDescriptions(product.product_description)}}</p>
+                  <p>{{ GetDescriptions(product.product_description) }}</p>
                 </div>
               </div>
             </div>
@@ -103,7 +116,9 @@
                   data-target="#collapse2"
                   aria-expanded="false"
                   aria-controls="collapse2"
-                >care details</button>
+                >
+                  care details
+                </button>
               </div>
               <div
                 v-bind:class="{ show: triggerButton2Colapse }"
@@ -114,7 +129,12 @@
               >
                 <div class="panel-body">
                   <img src="../assets//img/cards.png" alt />
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Proin pharetra tempor so dales. Phasellus sagittis auctor
+                    gravida. Integer bibendum sodales arcu id te mpus. Ut
+                    consectetur lacus leo, non scelerisque nulla euismod nec.
+                  </p>
                 </div>
               </div>
             </div>
@@ -128,7 +148,9 @@
                   data-target="#collapse3"
                   aria-expanded="false"
                   aria-controls="collapse3"
-                >shipping &amp; Returns</button>
+                >
+                  shipping &amp; Returns
+                </button>
               </div>
               <div
                 v-bind:class="{ show: triggerButton3Colapse }"
@@ -144,7 +166,12 @@
                     <br />Home Delivery
                     <span>3 - 4 days</span>
                   </p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integer bibendum sodales arcu id te mpus. Ut consectetur lacus leo, non scelerisque nulla euismod nec.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Proin pharetra tempor so dales. Phasellus sagittis auctor
+                    gravida. Integer bibendum sodales arcu id te mpus. Ut
+                    consectetur lacus leo, non scelerisque nulla euismod nec.
+                  </p>
                 </div>
               </div>
             </div>

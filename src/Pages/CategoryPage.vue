@@ -2,7 +2,7 @@
   <section class="category-section spad">
     <div class="container">
       <div class="row">
-        <CategoryFilter v-if="categories" :categories="categories" />
+        <CategoryFilter v-if="categories" :categories="categories" :products="products" />
         <CategoryProductsSection v-if="showComponent" :products="filteredItems" />
         <AppSpinner v-else />
       </div>
@@ -35,22 +35,14 @@ export default {
 
       return categoryArr.filter(product => {
         return filters.every(filterApplied => {
-          console.log(filterApplied);
-          if (product["id_category"].includes(filterApplied)) {
+          if (filterApplied && product["id_category"].includes(filterApplied)) {
             return product["id_category"].includes(filterApplied);
+          }
+          if (product["Brend"] && product["Brend"].includes(filterApplied)) {
+            return product["Brend"].includes(filterApplied);
           }
         });
       });
-
-      // return Object.values(this.categories).filter(product => {
-      //   console.log(product);
-      //   return this.$store.state.filters.every(filterApplied => {
-      // console.log(filterApplied);
-      //     if (product[id].includes(filterApplied)) {
-      //       return product.includes(filterApplied);
-      //     }
-      //   });
-      // });
     },
     filters() {
       return this.$store.state.filters;
@@ -77,5 +69,4 @@ export default {
   }
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

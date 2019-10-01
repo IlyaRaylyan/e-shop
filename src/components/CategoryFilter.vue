@@ -8,9 +8,7 @@
           :key="category.id"
           :class="{ active: currentFilter }"
         >
-          <a @click.prevent="addFilter(category, index)">{{
-            category.category
-          }}</a>
+          <a @click.prevent="addFilter(category, index)">{{ category.category }}</a>
           <ul class="sub-menu"></ul>
         </li>
       </ul>
@@ -19,12 +17,7 @@
       <h2 class="fw-title">refine by</h2>
       <div class="price-range-wrap">
         <h4>Price</h4>
-        <vue-slider
-          :min-range="100"
-          :max-range="150"
-          :max="1200"
-          v-model="value"
-        ></vue-slider>
+        <vue-slider :min-range="100" :max-range="150" :max="1200" v-model="value"></vue-slider>
       </div>
     </div>
     <div class="filter-widget mb-0">
@@ -71,63 +64,19 @@
     <div class="filter-widget mb-0">
       <h2 class="fw-title">Size</h2>
       <div class="fw-size-choose">
-        <div class="sc-item">
+        <div class="sc-item" v-for="(size, index) in allSizesFromProduct" :key="index">
           <input type="radio" name="sc" id="xs-size" />
-          <label for="xs-size">XS</label>
-        </div>
-        <div class="sc-item">
-          <input type="radio" name="sc" id="s-size" />
-          <label for="s-size">S</label>
-        </div>
-        <div class="sc-item">
-          <input type="radio" name="sc" id="m-size" checked />
-          <label for="m-size">M</label>
-        </div>
-        <div class="sc-item">
-          <input type="radio" name="sc" id="l-size" />
-          <label for="l-size">L</label>
-        </div>
-        <div class="sc-item">
-          <input type="radio" name="sc" id="xl-size" />
-          <label for="xl-size">XL</label>
-        </div>
-        <div class="sc-item">
-          <input type="radio" name="sc" id="xxl-size" />
-          <label for="xxl-size">XXL</label>
+          <label for="xs-size">{{ size }}</label>
         </div>
       </div>
     </div>
     <div class="filter-widget">
       <h2 class="fw-title">Brand</h2>
       <ul class="category-menu">
-        <li>
-          <a href="#">
-            Abercrombie &amp; Fitch
-            <span>(2)</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            Asos
-            <span>(56)</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            Bershka
-            <span>(36)</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            Missguided
-            <span>(27)</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            Zara
-            <span>(19)</span>
+        <li v-for="(brend, index) in allBrendsFromProducts" :key="index">
+          <a @click.prevent="addFilterByBrend(brend, index)" href="#">
+            {{ brend }}
+            <span></span>
           </a>
         </li>
       </ul>
@@ -141,6 +90,9 @@ export default {
   components: { VueSlider },
   props: {
     categories: {
+      required: true
+    },
+    products: {
       required: true
     }
   },
@@ -156,6 +108,37 @@ export default {
       this.$store.commit("storeFilters", category.id);
       const item = this.categories[index];
       this.currentFilter = item;
+    },
+    addFilterByBrend(brend, index) {
+      this.$store.commit("storeFilters", brend);
+      const item = this.allBrendsFromProducts[index];
+      this.currentFilter = item;
+    }
+  },
+  computed: {
+    allBrendsFromProducts() {
+      const brends = [];
+      let arrOfBrends = Object.values(this.products);
+
+      arrOfBrends.map(product => {
+        if (!brends.includes(product.Brend) && product.Brend) {
+          brends.push(product.Brend);
+        }
+      });
+
+      return brends;
+    },
+    allSizesFromProduct() {
+      const size = [];
+      let arrOfSizes = Object.values(this.products);
+      arrOfSizes.map(product => {
+        product.size.every(s => {
+          if (!size.includes(s)) {
+            size.push(s);
+          }
+        });
+      });
+      return size;
     }
   }
 };
