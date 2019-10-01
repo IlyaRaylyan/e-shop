@@ -21,10 +21,10 @@
                   <img v-lazy="product.product_images[0]" alt />
                 </router-link>
                 <div class="pi-links">
-                  <router-link class="add-card" :to="{name: 'cart'}">
+                  <a class="add-card" @click.prevent="addProductToCart(product)">
                     <i class="flaticon-bag"></i>
                     <span>ADD TO CART</span>
-                  </router-link>
+                  </a>
 
                   <a href="#" class="wishlist-btn">
                     <i class="flaticon-heart"></i>
@@ -107,6 +107,14 @@ export default {
     getImageFromArr(product) {
       console.log(product["Изображения"]);
       //   return product.URL[0]
+    },
+
+    addProductToCart(product) {
+      this.$store.commit("storeProductsInCart", {
+        key: product.product_article,
+        value: product
+      });
+      this.$router.push({ name: "cart" });
     }
   }
 };

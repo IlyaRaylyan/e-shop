@@ -27,7 +27,7 @@
               <div class="up-item">
                 <div class="shopping-card">
                   <i class="flaticon-bag"></i>
-                  <span>0</span>
+                  <span>{{amountCartProducts}}</span>
                 </div>
                 <router-link :to="{name: 'cart'}">Shopping Cart</router-link>
               </div>
@@ -196,7 +196,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    amountCartProducts() {
+      return Object.keys(this.$store.state.productsInCart).length;
+    }
+  }
+};
 </script>
 
 
