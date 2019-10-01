@@ -2,7 +2,7 @@
   <section v-if="product" class="product-section">
     <div class="container">
       <div class="back-link">
-        <a href="./category.html">Back to Category</a>
+        <router-link :to="{name: 'CategoryPage'}">Back to category</router-link>
       </div>
       <div class="row">
         <div class="col-lg-6">
@@ -66,7 +66,7 @@
               <span class="inc qtybtn">+</span>
             </div>
           </div>
-          <router-link class="site-btn" :to="{name: 'cart'}">добавить в корзину</router-link>
+          <button @click="addProductToCart()" class="site-btn">добавить в корзину</button>
 
           <div id="accordion" class="accordion-area">
             <div class="panel">
@@ -207,6 +207,13 @@ export default {
     }
   },
   methods: {
+    addProductToCart() {
+      this.$store.commit("storeProductsInCart", {
+        key: this.$route.params.id,
+        value: this.product
+      });
+      this.$router.push({ name: "cart" });
+    },
     GetDescriptions(el) {
       console.log(el.split("src="));
 

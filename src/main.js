@@ -3,6 +3,13 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import VueCarousel from "vue-carousel";
+import VueLazyload from "vue-lazyload";
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+
+  loading: "./assets/img/Spinner-1s-200px.gif",
+  attempt: 1
+});
 // import { library } from "@fortawesome/fontawesome-svg-core";
 // import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";

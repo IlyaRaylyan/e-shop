@@ -18,7 +18,7 @@
               <div class="pi-pic">
                 <!-- <div class="tag-sale">ON SALE</div> -->
                 <router-link :to="{name: 'ProductPage', params:{ id:product.product_article}}">
-                  <img :src="product.product_images[0]" alt />
+                  <img v-lazy="product.product_images[0]" alt />
                 </router-link>
                 <div class="pi-links">
                   <router-link class="add-card" :to="{name: 'cart'}">

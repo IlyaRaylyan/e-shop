@@ -16,12 +16,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr v-for="product in products" :key="product.product_article">
                     <td class="product-col">
-                      <img src="../assets/img/product/1.jpg" alt />
+                      <img :src="product.product_images[0]" alt />
                       <div class="pc-title">
-                        <h4>Animal Print Dress</h4>
-                        <p>$45.90</p>
+                        <h4>{{product.product_name}}</h4>
+                        <p>{{product.product_retail_prices}}</p>
                       </div>
                     </td>
                     <td class="quy-col">
@@ -34,58 +34,10 @@
                       </div>
                     </td>
                     <td class="size-col">
-                      <h4>Size M</h4>
+                      <h4>{{product.size[0]}}</h4>
                     </td>
                     <td class="total-col">
-                      <h4>$45.90</h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="product-col">
-                      <img src="../assets/img/cart/2.jpg" alt />
-                      <div class="pc-title">
-                        <h4>Ruffle Pink Top</h4>
-                        <p>$45.90</p>
-                      </div>
-                    </td>
-                    <td class="quy-col">
-                      <div class="quantity">
-                        <div class="pro-qty">
-                          <span class="dec qtybtn">-</span>
-                          <input type="text" value="1" />
-                          <span class="inc qtybtn">+</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="size-col">
-                      <h4>Size M</h4>
-                    </td>
-                    <td class="total-col">
-                      <h4>$45.90</h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="product-col">
-                      <img src="../assets/img/cart/3.jpg" alt />
-                      <div class="pc-title">
-                        <h4>Skinny Jeans</h4>
-                        <p>$45.90</p>
-                      </div>
-                    </td>
-                    <td class="quy-col">
-                      <div class="quantity">
-                        <div class="pro-qty">
-                          <span class="dec qtybtn">-</span>
-                          <input type="text" value="1" />
-                          <span class="inc qtybtn">+</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="size-col">
-                      <h4>Size M</h4>
-                    </td>
-                    <td class="total-col">
-                      <h4>$45.90</h4>
+                      <h4>{{product.product_retail_prices}}</h4>
                     </td>
                   </tr>
                 </tbody>
@@ -105,9 +57,23 @@
             <button>Submit</button>
           </form>
           <a href class="site-btn">Proceed to checkout</a>
-          <a href class="site-btn sb-dark">Continue shopping</a>
+          <a href @click.prevent="goBack()" class="site-btn sb-dark">Continue shopping</a>
         </div>
       </div>
     </div>
   </section>
 </template>
+<script>
+export default {
+  computed: {
+    products() {
+      return this.$store.state.productsInCart;
+    }
+  },
+  methods: {
+    goBack() {
+      this.$router.push({ name: "CategoryPage" });
+    }
+  }
+};
+</script>

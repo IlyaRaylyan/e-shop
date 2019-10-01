@@ -9,9 +9,13 @@ export default new Vuex.Store({
     category: {},
     products: {},
     cart: {},
-    filters: []
+    filters: [],
+    productsInCart: {}
   },
   mutations: {
+    storeProductsInCart(state, { key, value }) {
+      Vue.set(state.productsInCart, key, value);
+    },
     storeCategories(state, { key, value }) {
       Vue.set(state.category, key, value);
     },
