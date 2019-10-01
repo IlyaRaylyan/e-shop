@@ -25,6 +25,7 @@ export default new Vuex.Store({
     storeFilters(state, filter) {
       if (state.filters.length == 1) {
         state.filters.pop();
+        state.filters.push(filter);
       } else {
         state.filters.push(filter);
       }
