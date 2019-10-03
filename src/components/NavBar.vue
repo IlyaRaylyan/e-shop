@@ -10,12 +10,25 @@
             </router-link>
           </div>
           <div class="col-xl-6 col-lg-5">
-            <form class="header-search-form">
-              <input type="text" placeholder="Search on divisima ...." />
+            <div class="header-search-form">
+              <input
+                type="text"
+                placeholder="Search on divisima ...."
+                v-model="search"
+                @change.prevent="filteredList()"
+              />
               <button>
                 <i class="flaticon-search"></i>
               </button>
-            </form>
+            </div>
+            <ul class="sub-menu" v-for="(item, index) in searchFilter" v-if="index< 5">
+              <div class="user-panel">
+                <div class="up-item">
+                  <a href @click.prevent="goToProduct(item.product_article)">{{item.product_name}}</a>
+                </div>
+                <img :src="item.product_images[0]" height="100px" alt />
+              </div>
+            </ul>
           </div>
           <div class="col-xl-4 col-lg-5">
             <div class="user-panel">
@@ -197,9 +210,42 @@
 
 <script>
 export default {
+  data() {
+    return {
+      search: "",
+      searchFilter: []
+    };
+  },
+
   computed: {
     amountCartProducts() {
       return Object.keys(this.$store.state.productsInCart).length;
+    },
+    products() {
+      return this.$store.state.products;
+    }
+  },
+  methods: {
+    filteredList() {
+      if (!this.search) {
+        this.searchFilter = [];
+        return;
+      }
+
+      this.searchFilter = this.products.filter(prod => {
+        return prod.product_name
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
+    },
+    cleanSearch() {
+      this.search = "";
+      this.searchFilter = [];
+    },
+    goToProduct(id) {
+      this.$router.push({ name: "ProductPage", params: { id } });
+      this.search = "";
+      this.searchFilter = [];
     }
   }
 };

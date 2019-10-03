@@ -23,8 +23,7 @@ import BannerSection from "../components/BannerSection.vue";
 export default {
   data() {
     return {
-      showComponent: false,
-      products: {}
+      showComponent: false
     };
   },
   mixins: [asyncDataStatus],
@@ -39,6 +38,9 @@ export default {
   computed: {
     category() {
       return this.$store.state.category;
+    },
+    products() {
+      return this.$store.state.products;
     }
   },
   methods: {},
@@ -46,12 +48,11 @@ export default {
     this.$store
       .dispatch("fetchProducts")
       .then(product => {
-        this.products = product;
+        this.$store.commit("storeProducts", product);
       })
       .then(() => {
         this.showComponent = true;
       });
-
     // this.$store.dispatch("fetchFortyRandomProducts");
   }
 };

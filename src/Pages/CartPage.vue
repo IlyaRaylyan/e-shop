@@ -27,9 +27,12 @@
                     <td class="quy-col">
                       <div class="quantity">
                         <div class="pro-qty">
-                          <span class="dec qtybtn">-</span>
-                          <input type="text" value="1" />
-                          <span class="inc qtybtn">+</span>
+                          <span
+                            class="dec qtybtn"
+                            @click="product.quantity > 1 ? product.quantity -=1: product.quantity=1"
+                          >-</span>
+                          <input type="text" :value="product.quantity " />
+                          <span class="inc qtybtn" @click="product.quantity +=1">+</span>
                         </div>
                       </div>
                     </td>
@@ -46,7 +49,7 @@
             <div class="total-cost">
               <h6>
                 Total
-                <span>$99.90</span>
+                <span>UAH:{{totalPrice}}</span>
               </h6>
             </div>
           </div>
@@ -68,6 +71,19 @@ export default {
   computed: {
     products() {
       return this.$store.state.productsInCart;
+    },
+    totalPrice() {
+      const arr = Object.values(this.products);
+      let result = 0;
+
+      arr.forEach(value => {
+        result =
+          result +
+          value.quantity *
+            Number(value.product_retail_prices.split("UAH:").join(""));
+      });
+
+      return result;
     }
   },
   methods: {

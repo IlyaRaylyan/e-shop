@@ -22,6 +22,9 @@ export default new Vuex.Store({
     storeProduct(state, { key, value }) {
       Vue.set(state.products, key, value);
     },
+    storeProducts(state, value) {
+      state.products = value;
+    },
     storeFilters(state, filter) {
       if (state.filters.length == 1) {
         state.filters.pop();

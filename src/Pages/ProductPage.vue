@@ -70,9 +70,9 @@
           <div class="quantity">
             <p>Количество</p>
             <div class="pro-qty">
-              <span class="dec qtybtn">-</span>
-              <input type="text" value="1" />
-              <span class="inc qtybtn">+</span>
+               <span class="dec qtybtn" @click="quantity > 1 ? quantity -=1: quantity=1">-</span>
+              <input type="text" :value="quantity " />
+              <span class="inc qtybtn" @click="quantity +=1">+</span>
             </div>
           </div>
           <button @click="addProductToCart()" class="site-btn">
@@ -211,7 +211,8 @@ export default {
       triggerButton1Colapse: true,
       triggerButton2Colapse: false,
       triggerButton3Colapse: false,
-      currentPic: ""
+      currentPic: "",
+       quantity: 1
     };
   },
   created() {
@@ -234,10 +235,12 @@ export default {
     }
   },
   methods: {
-    addProductToCart() {
+  addProductToCart() {
+      const productToCart = { ...this.product, quantity: this.quantity };
+
       this.$store.commit("storeProductsInCart", {
         key: this.$route.params.id,
-        value: this.product
+        value: productToCart
       });
       this.$router.push({ name: "cart" });
     },

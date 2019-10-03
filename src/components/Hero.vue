@@ -19,7 +19,6 @@
                   <h2>Осенняя коллекция</h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
                   <router-link :to="{name: 'CategoryPage'}" class="site-btn sb-line">DISCOVER</router-link>
-                  <a href="#" class="site-btn sb-white">ADD TO CART</a>
                 </div>
               </div>
             </div>
@@ -34,7 +33,6 @@
                   <h2>denim jackets</h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
                   <router-link :to="{name: 'CategoryPage'}" class="site-btn sb-line">DISCOVER</router-link>
-                  <a href="#" class="site-btn sb-white">ADD TO CART</a>
                 </div>
               </div>
             </div>
@@ -49,7 +47,6 @@
                   <h2>denim jackets</h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
                   <router-link :to="{name: 'CategoryPage'}" class="site-btn sb-line">DISCOVER</router-link>
-                  <a href="#" class="site-btn sb-white">ADD TO CART</a>
                 </div>
               </div>
             </div>
