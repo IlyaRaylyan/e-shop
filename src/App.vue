@@ -2,11 +2,17 @@
   <div id="app">
     <NavBar />
 
-    <router-view />
+    <transition
+      enter-active-class="animated slideInRight"
+      leave-active-class="animated slideOutLeft"
+    >
+      <router-view appear :key="$route.path"></router-view>
+    </transition>
     <FooterSection />
   </div>
 </template>
 <script>
+require("vue2-animate/dist/vue2-animate.min.css");
 import NavBar from "./components/NavBar.vue";
 import FooterSection from "./components/FooterSection.vue";
 export default {

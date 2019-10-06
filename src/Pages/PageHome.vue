@@ -1,15 +1,16 @@
 <template>
   <div>
-    <Hero />
+    <Hero v-on:slide-next-transition-end="someF()" />
     <FeaturesSection />
     <!-- <CategoryFolders :category="category" /> -->
+
     <LatestProductSection v-if="showComponent" :products="products" />
+
     <AppSpinner v-else />
+
     <BannerSection />
   </div>
 </template>
-
-
 
 <script>
 import asyncDataStatus from "../mixins/asyncDataStatus";
@@ -20,6 +21,7 @@ import AppSpinner from "../components/AppSpinner.vue";
 import CategoryFolders from "../components/CategoryFolders.vue";
 import LatestProductSection from "../components/LatestProductSection.vue";
 import BannerSection from "../components/BannerSection.vue";
+
 export default {
   data() {
     return {
@@ -44,6 +46,9 @@ export default {
     }
   },
   methods: {},
+  someF() {
+    console.log("evrika");
+  },
   created() {
     this.$store
       .dispatch("fetchProducts")
@@ -57,3 +62,4 @@ export default {
   }
 };
 </script>
+<style scoped></style>
