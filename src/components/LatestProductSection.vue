@@ -17,11 +17,19 @@
             <div class="product-item shadow-sm">
               <div class="pi-pic">
                 <!-- <div class="tag-sale">ON SALE</div> -->
-                <router-link :to="{name: 'ProductPage', params:{ id:product.product_article}}">
+                <router-link
+                  :to="{
+                    name: 'ProductPage',
+                    params: { id: product.product_article }
+                  }"
+                >
                   <img v-lazy="product.product_images[0]" alt />
                 </router-link>
                 <div class="pi-links">
-                  <a class="add-card" @click.prevent="addProductToCart(product)">
+                  <a
+                    class="add-card"
+                    @click.prevent="addProductToCart(product)"
+                  >
                     <i class="flaticon-bag"></i>
                     <span>ADD TO CART</span>
                   </a>
@@ -31,9 +39,10 @@
                   </a>
                 </div>
               </div>
+
               <div class="pi-text">
-                <h6>{{product.product_retail_prices}}</h6>
-                <p>{{product.product_name}}</p>
+                <h6>{{ product.product_retail_prices }}</h6>
+                <p>{{ product.product_name }}</p>
               </div>
             </div>
           </swiper-slide>
@@ -47,10 +56,11 @@
 
         <div class="text-center w-100 pt-3">
           <router-link
-            :to="{name: 'CategoryPage' , params: {products: products}}"
+            :to="{ name: 'CategoryPage', params: { products: products } }"
             tag="button"
             class="site-btn sb-line sb-dark"
-          >Смотреть все</router-link>
+            >Смотреть все</router-link
+          >
         </div>
       </div>
     </div>
@@ -119,4 +129,3 @@ export default {
   }
 };
 </script>
-
