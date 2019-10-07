@@ -61,27 +61,40 @@
             aria-haspopup="true"
             role="button"
             tabindex="0"
-            class="slicknav_btn slicknav_collapsed"
+            class="slicknav_btn"
             style="outline: none;"
+            @click="showMobileMenu = !showMobileMenu"
+            v-bind:class="{slicknav_collapsed: !showMobileMenu, clicknav_open: showMobileMenu}"
           >
-            <span class="slicknav_menutxt" @click="showMobileMenu = !showMobileMenu">MENU</span>
-            <span class="slicknav_icon" @click="showMobileMenu = !showMobileMenu">
+            <span class="slicknav_menutxt">MENU</span>
+            <span class="slicknav_icon">
               <span class="slicknav_icon-bar"></span>
               <span class="slicknav_icon-bar"></span>
               <span class="slicknav_icon-bar"></span>
             </span>
           </a>
           <ul
-            class="slicknav_nav slicknav_hidden"
+            class="slicknav_nav"
             aria-hidden="true"
             role="menu"
-            v-if="showMobileMenu"
+            v-bind:class="{disableMenuClass: !showMobileMenu,  slicknav_hidden: !showMobileMenu }"
           >
             <li>
-              <router-link :to="{ name: 'home' }">Home</router-link>
+              <a href="#" role="menuitem" tabindex="-1">Home</a>
             </li>
-
-            <li class="slicknav_collapsed slicknav_parent">
+            <li>
+              <a href="#" role="menuitem" tabindex="-1">Women</a>
+            </li>
+            <li>
+              <a href="#" role="menuitem" tabindex="-1">Men</a>
+            </li>
+            <li>
+              <a href="#" role="menuitem" tabindex="-1">
+                Jewelry
+                <span class="new">New</span>
+              </a>
+            </li>
+            <li class="slicknav_parent slicknav_open">
               <a
                 href="#"
                 role="menuitem"
@@ -89,14 +102,13 @@
                 tabindex="-1"
                 class="slicknav_item slicknav_row"
                 style="outline: none;"
-                @click.prevent="showSubMenuForMobile = !showSubMenuForMobile"
               >
                 <a href="#" tabindex="-1">Shoes</a>
                 <span class="slicknav_arrow">
-                  <i class="flaticon-right-arrow"></i>
+                  <i class="flaticon-down-arrow"></i>
                 </span>
               </a>
-              <ul class="sub-menu slicknav_hidden" role="menu" v-if="showSubMenuForMobile">
+              <ul class="sub-menu" role="menu" aria-hidden="true" style>
                 <li>
                   <a href="#" role="menuitem" tabindex="-1">Sneakers</a>
                 </li>
@@ -150,6 +162,9 @@
                   <a href="./contact.html" role="menuitem" tabindex="-1">Contact Page</a>
                 </li>
               </ul>
+            </li>
+            <li>
+              <a href="#" role="menuitem" tabindex="-1">Blog</a>
             </li>
           </ul>
         </div>
@@ -253,4 +268,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.disableMenuClass {
+  display: none;
+}
+</style>

@@ -12,22 +12,14 @@
           <div :class="slide.style">
             <div class="container">
               <div class="row">
-                <div
-                  v-if="show"
-                  class="col-xl-6 col-lg-7 text-white"
-                  style="margin: 60px"
-                >
+                <div v-if="show" class="col-xl-6 col-lg-7 text-white" style="margin: 60px">
                   <span class="fade-in-bottom">{{ slide.title }}</span>
 
                   <h2 class="fade-in-bottom-h2">{{ slide.subtitle }}</h2>
 
                   <p class="fade-in-bottom-p">{{ slide.text }}</p>
 
-                  <router-link
-                    :to="{ name: 'CategoryPage' }"
-                    class="site-btn sb-line"
-                    >DISCOVER</router-link
-                  >
+                  <router-link :to="{ name: 'CategoryPage' }" class="site-btn sb-line">DISCOVER</router-link>
                 </div>
               </div>
             </div>
@@ -152,14 +144,17 @@ export default {
 .carouselBG1 {
   background-image: url(../assets/img/bg.jpg);
   height: 500px;
+  background-position: top center;
 }
 .carouselBG2 {
   background-image: url(../assets/img/bg-2.jpg);
   height: 500px;
+  background-position: top center;
 }
 .carouselBG3 {
   background-image: url(../assets/img/bg.jpg);
   height: 500px;
+  background-position: top center;
 }
 .hero-swiper-slide {
   position: relative;

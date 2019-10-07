@@ -24,12 +24,14 @@ export default {
 </script>
 <style>
 @import "./Source/sass/style.scss";
-@import "./assets/css/style.css";
-@import "./assets/css/flaticon.css";
-@import "./assets/css/animate.css";
 
-@import "./assets/css/slicknav.min.css";
 @import "./assets/css/bootstrap.min.css";
 
 @import "./assets/fontawesome-free-5.11.2-web/css/all.css";
+@import "./assets/css/flaticon.css";
+
+@import "./assets/css/slicknav.min.css";
+
+@import "./assets/css/animate.css";
+@import "./assets/css/style.css";
 </style>
