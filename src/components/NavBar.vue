@@ -13,7 +13,7 @@
             <div class="header-search-form">
               <input
                 type="text"
-                placeholder="Search on divisima ...."
+                placeholder="Search on e-fashion...."
                 v-model="search"
                 @change.prevent="filteredList()"
               />
@@ -21,14 +21,16 @@
                 <i class="flaticon-search"></i>
               </button>
             </div>
-            <ul class="sub-menu" v-for="(item, index) in searchFilter" v-if="index < 5">
+            <ul
+              class="sub-menu"
+              v-for="(item, index) in searchFilter"
+              v-if="index < 5"
+            >
               <div class="user-panel">
                 <div class="up-item">
-                  <a href @click.prevent="goToProduct(item.product_article)">
-                    {{
+                  <a href @click.prevent="goToProduct(item.product_article)">{{
                     item.product_name
-                    }}
-                  </a>
+                  }}</a>
                 </div>
                 <img :src="item.product_images[0]" height="100px" alt />
               </div>
@@ -64,7 +66,10 @@
             class="slicknav_btn"
             style="outline: none;"
             @click="showMobileMenu = !showMobileMenu"
-            v-bind:class="{slicknav_collapsed: !showMobileMenu, clicknav_open: showMobileMenu}"
+            v-bind:class="{
+              slicknav_collapsed: !showMobileMenu,
+              clicknav_open: showMobileMenu
+            }"
           >
             <span class="slicknav_menutxt">MENU</span>
             <span class="slicknav_icon">
@@ -77,7 +82,10 @@
             class="slicknav_nav"
             aria-hidden="true"
             role="menu"
-            v-bind:class="{disableMenuClass: !showMobileMenu,  slicknav_hidden: !showMobileMenu }"
+            v-bind:class="{
+              disableMenuClass: !showMobileMenu,
+              slicknav_hidden: !showMobileMenu
+            }"
           >
             <li>
               <a href="#" role="menuitem" tabindex="-1">Home</a>
@@ -147,19 +155,29 @@
                 style="display: none;"
               >
                 <li>
-                  <a href="./product.html" role="menuitem" tabindex="-1">Product Page</a>
+                  <a href="./product.html" role="menuitem" tabindex="-1"
+                    >Product Page</a
+                  >
                 </li>
                 <li>
-                  <a href="./category.html" role="menuitem" tabindex="-1">Category Page</a>
+                  <a href="./category.html" role="menuitem" tabindex="-1"
+                    >Category Page</a
+                  >
                 </li>
                 <li>
-                  <a href="./cart.html" role="menuitem" tabindex="-1">Cart Page</a>
+                  <a href="./cart.html" role="menuitem" tabindex="-1"
+                    >Cart Page</a
+                  >
                 </li>
                 <li>
-                  <a href="./checkout.html" role="menuitem" tabindex="-1">Checkout Page</a>
+                  <a href="./checkout.html" role="menuitem" tabindex="-1"
+                    >Checkout Page</a
+                  >
                 </li>
                 <li>
-                  <a href="./contact.html" role="menuitem" tabindex="-1">Contact Page</a>
+                  <a href="./contact.html" role="menuitem" tabindex="-1"
+                    >Contact Page</a
+                  >
                 </li>
               </ul>
             </li>
