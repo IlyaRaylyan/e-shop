@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-2 text-center text-lg-left">
             <!-- logo -->
-            <router-link class="site-logo" :to="{name: 'home'}">
+            <router-link class="site-logo" :to="{ name: 'home' }">
               <img src="../assets/img/logo.png" alt />
             </router-link>
           </div>
@@ -21,10 +21,14 @@
                 <i class="flaticon-search"></i>
               </button>
             </div>
-            <ul class="sub-menu" v-for="(item, index) in searchFilter" v-if="index< 5">
+            <ul class="sub-menu" v-for="(item, index) in searchFilter" v-if="index < 5">
               <div class="user-panel">
                 <div class="up-item">
-                  <a href @click.prevent="goToProduct(item.product_article)">{{item.product_name}}</a>
+                  <a href @click.prevent="goToProduct(item.product_article)">
+                    {{
+                    item.product_name
+                    }}
+                  </a>
                 </div>
                 <img :src="item.product_images[0]" height="100px" alt />
               </div>
@@ -40,9 +44,9 @@
               <div class="up-item">
                 <div class="shopping-card">
                   <i class="flaticon-bag"></i>
-                  <span>{{amountCartProducts}}</span>
+                  <span>{{ amountCartProducts }}</span>
                 </div>
-                <router-link :to="{name: 'cart'}">Shopping Cart</router-link>
+                <router-link :to="{ name: 'cart' }">Shopping Cart</router-link>
               </div>
             </div>
           </div>
@@ -60,8 +64,8 @@
             class="slicknav_btn slicknav_collapsed"
             style="outline: none;"
           >
-            <span class="slicknav_menutxt">MENU</span>
-            <span class="slicknav_icon">
+            <span class="slicknav_menutxt" @click="showMobileMenu = !showMobileMenu">MENU</span>
+            <span class="slicknav_icon" @click="showMobileMenu = !showMobileMenu">
               <span class="slicknav_icon-bar"></span>
               <span class="slicknav_icon-bar"></span>
               <span class="slicknav_icon-bar"></span>
@@ -71,10 +75,10 @@
             class="slicknav_nav slicknav_hidden"
             aria-hidden="true"
             role="menu"
-            style="display: none;"
+            v-if="showMobileMenu"
           >
             <li>
-              <router-link :to="{name: 'home'}">Home</router-link>
+              <router-link :to="{ name: 'home' }">Home</router-link>
             </li>
 
             <li class="slicknav_collapsed slicknav_parent">
@@ -85,18 +89,14 @@
                 tabindex="-1"
                 class="slicknav_item slicknav_row"
                 style="outline: none;"
+                @click.prevent="showSubMenuForMobile = !showSubMenuForMobile"
               >
                 <a href="#" tabindex="-1">Shoes</a>
                 <span class="slicknav_arrow">
                   <i class="flaticon-right-arrow"></i>
                 </span>
               </a>
-              <ul
-                class="sub-menu slicknav_hidden"
-                role="menu"
-                aria-hidden="true"
-                style="display: none;"
-              >
+              <ul class="sub-menu slicknav_hidden" role="menu" v-if="showSubMenuForMobile">
                 <li>
                   <a href="#" role="menuitem" tabindex="-1">Sneakers</a>
                 </li>
@@ -156,7 +156,7 @@
         <!-- menu -->
         <ul class="main-menu">
           <li>
-            <router-link :to="{name: 'home'}">Home</router-link>
+            <router-link :to="{ name: 'home' }">Home</router-link>
           </li>
 
           <li>
@@ -200,7 +200,7 @@
             </ul>
           </li>
           <li>
-            <router-link :to="{name: 'CategoryPage'}">Category</router-link>
+            <router-link :to="{ name: 'CategoryPage' }">Category</router-link>
           </li>
         </ul>
       </div>
@@ -213,7 +213,9 @@ export default {
   data() {
     return {
       search: "",
-      searchFilter: []
+      searchFilter: [],
+      showMobileMenu: false,
+      showSubMenuForMobile: false
     };
   },
 
@@ -251,6 +253,4 @@ export default {
 };
 </script>
 
-
-<style scoped>
-</style>
+<style scoped></style>
